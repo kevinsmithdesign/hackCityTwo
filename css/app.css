@@ -6111,6 +6111,23 @@ hr {
   margin-top:12px;
 }
 
+.comingSoon {
+  width:300px;
+  display:block;
+  margin-left:auto;
+  margin-right:auto;
+  margin-top:-30px;
+}
+
+.logoTwo {
+  width:250px;
+  display:block;
+  margin-left:auto;
+  margin-right:auto;
+  margin-top:100px;
+}
+
+
 
 
 
@@ -6389,9 +6406,6 @@ hr {
 
 
 }
-
-
-
 
 @media (max-width: 714px) {
 
