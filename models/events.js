@@ -50,6 +50,7 @@ module.exports = function (sequelize, DataTypes) {
 
   }, {
     timestamps: false,
+    // Links the events table with the user and teams tables
     classMethods: {
       associate: function (models) {
         Events.belongsToMany(models.Users, {
