@@ -6128,7 +6128,7 @@ hr {
 }
 
 .addEvent {
-  margin-left:145px;
+  margin-left:;
   margin-bottom:20px;
 }
 
@@ -6541,6 +6541,13 @@ hr {
 
   #gordon {
     height:810px !important;
+  }
+
+
+  .addEvent {
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
   }
 
 

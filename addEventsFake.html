@@ -33,8 +33,56 @@
 </nav>
 <br>
 <div class="container">
-  <button class="addEvent">Add Event</button>
+  <button type="submit" class="btn btn-default" data-toggle="modal" data-target="#myModal" id="homePageButton">Add Event</button>
 </div>
+
+<!-- Fake Events Modal that will be deleted later on -->
+
+<div class="container">
+<!-- Trigger the modal with a button -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+        <form>
+
+          <div class="form-group">
+
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+
+          </div>
+          <div class="form-group">
+
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+          </div>
+
+          <button type="submit" class="btn btn-default"><a href="profile.html" class="submit">Submit</a></button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</div>
+
+
+
+<!-- Fake Events Page will end -->
+
+
 
 <div class="container">
   <div class="row">
@@ -59,18 +107,6 @@
 </div>
 <br>
 
-<!--    Hack City Monthly Meetup
-April 24, 10-2, Norris Conference Center
-The GIKS (Grace, Ian, Kevin, and Syed) invite you to mingle with other hackCity members and participate
-in this month’s Hackathon event.
-Cost: Free. Duration: Duration 24 hours: Start 9am on Friday and End Sunday 5pm (team work 8 hours a day for 3 days
- - Virtual - no Onsite) alone or with their desired team members. If you need help finding additional team members, search hackCity by Skills.
-Application: All Hackathon participants (alone or as a team) must sign up and submit idea through hackCity.com  and present a demo or
-pitch deck link (you own all Intellectual Property). Fill your application no later than March 24, 2017.-->
-
-
-
-
 <div class="container">
   <div class="row">
     <div class="col-lg-3">
@@ -90,17 +126,6 @@ pitch deck link (you own all Intellectual Property). Fill your application no la
 </div>
 <br>
 
-<!-- Summer Jam Hackathon Series
-June 8 – August 3
-Our friends at ChallengePost just launched the Summer Jam Hackathon Series -- 8 online hackathons between now and August -- and we want you to represent UMass Amherst! The top 3 schools with the most participating hackers will win sponsorships for their next hackathons.
-THE FIRST TWO HACKATHONS ARE OPEN NOW THROUGH JUNE 22:
-REINVENT THE SELFIE (powered by Twilio)
-Valencia is so played out. Build the next generation of selfie technology.
-OPEN DATA MASHUP (powered by Socrata)
-Create a visualization, story, or experience using insights from 2+ open datasets. -->
-
-
-
 <div class="container">
   <div class="row">
     <div class="col-lg-3">
@@ -115,14 +140,6 @@ Create a visualization, story, or experience using insights from 2+ open dataset
       to your heart's content on whatever project you bring. Whatever the language and level, show up.
       </p>
         <br>
-
-
-        <!-- Coffee & Code
-June 10, 8pm, Houston Technology Center
-Do you want to carve out some creative code time where you can work on your projects without anybody looking over your
-shoulder or wondering when you'll be finished with that feature? Or maybe there's a language or technology that you've
-really wanted to try but haven't found the time to do it. -->
-
 
         <button class="RSVP">RSVP</button>
         <button class="Directions">Directions</button>
