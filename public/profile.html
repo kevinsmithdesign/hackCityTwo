@@ -6,6 +6,271 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:700" rel="stylesheet">
+    <link href='fullcalendar.css' rel='stylesheet' />
+<link href='fullcalendar.print.css' rel='stylesheet' media='print' />
+
+<script src='jquery/jquery-1.10.2.js'></script>
+<script src='jquery/jquery-ui.custom.min.js'></script>
+
+<script src='fullcalendar.js'></script>
+<script>
+
+	$(document).ready(function() {
+	    var date = new Date();
+		var d = date.getDate();
+		var m = date.getMonth();
+		var y = date.getFullYear();
+		
+		  
+		/* initialize external events*/
+	
+		$('#external-events div.external-event').each(function() {
+		
+			// create event
+		
+			var eventObject = {
+				title: $.trim($(this).text()) // use element's text as event title
+			};
+			
+			// store Event Object in the DOM element
+			$(this).data('eventObject', eventObject);
+			
+			// make the event draggable using jQuery UI
+			$(this).draggable({
+				zIndex: 999,
+				revert: true,      // will cause the event to go back to its
+				revertDuration: 0  //  original position after the drag
+			});
+			
+		});
+	
+	
+		/* initialize the calendar*/
+		
+		var calendar =  $('#calendar').fullCalendar({
+			header: {
+				left: 'title',
+				center: 'agendaDay,agendaWeek,month',
+				right: 'prev,next today'
+			},
+			editable: true,
+			firstDay: 0, //Sunday//
+			selectable: true,
+			defaultView: 'month',
+			
+			axisFormat: 'h:mm',
+			columnFormat: {
+                month: 'ddd',    // Sun
+                week: 'ddd d', // Sun 7
+                day: 'dddd M/d',  // Sunday 9/7
+                agendaDay: 'dddd d'
+            },
+            titleFormat: {
+                month: 'MMMM yyyy', // February 2017
+                week: "MMMM yyyy", // February 2017
+                day: 'MMMM yyyy'  // Sunday, Sep 26, 2017
+            },
+			allDaySlot: false,
+			selectHelper: true,
+			select: function(start, end, allDay) {
+				var title = prompt('Event Title:');
+				if (title) {
+					calendar.fullCalendar('renderEvent',
+						{
+							title: title,
+							start: start,
+							end: end,
+							allDay: allDay
+						},
+						true // makes event "stick"
+					);
+				}
+				calendar.fullCalendar('unselect');
+			},
+			droppable: true, // this allows things to be dropped onto the calendar !!!
+			drop: function(date, allDay) { // this function is called when something is dropped
+			
+				// retrieve the dropped element's stored Event Object
+				var originalEventObject = $(this).data('eventObject');
+				var copiedEventObject = $.extend({}, originalEventObject);
+				
+				// assign it the date that was reported
+				copiedEventObject.start = date;
+				copiedEventObject.allDay = allDay;
+				
+				// render the event on the calendar
+				
+				$('#calendar').fullCalendar('renderEvent', copiedEventObject, true);
+				
+				// is the "remove after drop" checkbox checked?
+				if ($('#drop-remove').is(':checked')) {
+					// if so, remove the element from the "Draggable Events" list
+					$(this).remove();
+				}
+				
+			},
+			
+			events: [
+				{
+					title: 'Call Gilfoyle',
+					start: new Date(y, m, d+4, 8),
+					allDay: false,
+					className: 'default'
+				},
+				{
+					title: 'Check Out Kevin Smith site',
+					start: new Date(y, m, d, 7),
+					end: new Date(y, m, d, 8),
+					allDay: false,
+					url: 'https://www.mrkevinsmithdesign.com',
+					className: 'projectsite'
+				},
+				{
+					title: 'Lunch with Kevin',
+					start: new Date(y, m, d, 12),
+					allDay: false,
+					end: new Date(y, m, d, 13),
+					className: 'default'
+				},
+				{
+					title: 'Whats Good Houston Podcast',
+					start: new Date(y, m, d, 19),
+					allDay: false,
+					url: 'https://www.wghpodcast.com',
+					className: 'projectsite'
+				},
+				{
+					title: 'Google Hangout with Dinesh',
+					start: new Date(y, m, d+6, 11),
+					allDay: false,
+					className: 'meetup'
+				},
+				{
+					id: 999,
+					title: 'Pied Piper Weekly Meeting', //Repeating Event//
+					start: new Date(y, m, d+2, 16, 0),
+					allDay: false,
+					className: 'info' /*info*/
+				},
+				{
+					id: 999,
+					title: 'Pied Piper Weekly Meeting', //Repeating Event//
+					start: new Date(y, m, d+9, 16, 0),
+					allDay: false,
+					className: 'info' /*info*/
+				},
+				{
+					id: 999,
+					title: 'Pied Piper Weekly Meeting', //Repeating Event//
+					start: new Date(y, m, d+16, 16, 0),
+					allDay: false,
+					className: 'info' /*info*/
+				},
+				{
+					id: 999,
+					title: 'Pied Piper Weekly Meeting', //Repeating Event//
+					start: new Date(y, m, d+23, 16, 0),
+					allDay: false,
+					className: 'info' /*info*/
+				},
+				{
+					title: 'Conference Call Peter Gregory',
+					start: new Date(y, m, d+5, 10, 30),
+					allDay: false,
+					className: 'meetup' 
+				},
+				{
+					title: 'Send Code to Elrich',
+					start: new Date(y, m, d, 21),
+					allDay: false,
+					className: 'important' 
+				},
+				{
+					title: 'TechCrunch Disrupt',
+					start: new Date(y, m, d+11, 9, 0),
+					end: new Date(y, m, d+11, 7, 0),
+					allDay: false,
+					className: 'meetup'
+				},
+				{
+					title: 'TECH CONNECT Event',
+					start: new Date(y, m, d+5, 19, 0),
+					end: new Date(y, m, d+5, 21, 30),
+					allDay: false,
+					className: 'default'
+				},
+				{
+					title: 'Discuss Software Solutions with Syed',
+					start: new Date(y, m, d+12, 10),
+					allDay: false,
+					className: 'default'
+				},
+			],			
+		});
+		
+		
+	});
+
+</script>
+<style>
+
+	body {
+		margin-top: 40px;
+		text-align: center;
+		font-size: 14px;
+		font-color: #161230;
+		font-family: "Helvetica Nueue",Arial,Verdana,sans-serif;
+		background-color: #161230;
+		}
+		
+	#wrap {
+		width: 1100px;
+		margin: 0 auto;
+		}
+		
+	#external-events {
+		float: left;
+		width: 150px;
+		padding: 0 10px;
+		text-align: left;
+		}
+		
+	#external-events h4 {
+		font-size: 16px;
+		margin-top: 0;
+		padding-top: 1em;
+		}
+		
+	.external-event { /* try to mimic the look of a real event */
+		margin: 10px 0;
+		padding: 2px 4px;
+		background: #3366CC;
+		color: #fff;
+		font-size: .85em;
+		cursor: pointer;
+		}
+		
+	#external-events p {
+		margin: 1.5em 0;
+		font-size: 11px;
+		color: #666;
+		}
+		
+	#external-events p input {
+		margin: 0;
+		vertical-align: middle;
+		}
+
+	#calendar {
+/* 		float: right; */
+        margin: 0 auto;
+		width: 900px;
+		background-color: #FFFFFF;
+		border-radius: 6px;
+        box-shadow: 0 1px 2px #6056a5;
+		}
+
+</style>
   </head>
   <body>
     <nav class="navbar navbar-default">
@@ -329,6 +594,12 @@
 
 
 
+<div id='wrap'>
+
+<div id='calendar'></div>
+
+<div style='clear:both'></div>
+</div>
 
 
 
