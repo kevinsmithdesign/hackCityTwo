@@ -1,0 +1,20 @@
+{
+  "name": "hackcitytwo",
+  "version": "1.0.0",
+  "description": "hack city database",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mrkevinsmithdesign/hackCityTwo.git"
+  },
+  "author": "giks",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mrkevinsmithdesign/hackCityTwo/issues"
+  },
+  "homepage": "https://github.com/mrkevinsmithdesign/hackCityTwo#readme"
+}
